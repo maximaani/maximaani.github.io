@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta name="keywords" content="Adlerweg, Tirol">
-	<title>Adlerweg</title>
-	<link rel="stylesheet" href="adler.css"></link>
-	</head>
-<body>
-<script>
-</script>
-</body>
+  <head>
+    <title>Adlerweg</title>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+	<script src="gpx/etappe02.js"></script>
+ </head>
+  <body>
+    <h1>Adlerweg</h1>
+	<div id="adlerkarteDiv" style="width:90%;height:500px"></div>
+	<script>
+	var adlerKarte = L.map("adlerkarteDiv");
+	var osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
+        }).addTo(adlerKarte);
+	adlerKarte.setView([47, 11], 10);
+	var etappe02 = L.geoJson(etappe02json, {
+		style: {
+	color:"#ff0000",
+	weight: 15
+	}
+	});
+	
+	adlerKarte.addLayer(etappe02);
+	adlerKarte.fitBounds(etappe02);
+	</script>
+  </body>
+</html>
