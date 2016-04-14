@@ -87,8 +87,16 @@
 		 L.control.scale({
             'imperial' : true
         }).addTo(adlerkarte);
-         
-</script> <!--Maßstab wird angezeigt, imperial steht fuer true (Fuß) und false steht für metrisch-->
+		
+		var marker = L.marker([47.522778, 12.429722]).addTo(adlerkarte);
+		marker.bindPopup('<h1>Startpunkt</h1><p><h3>St. Johann in Tirol</h3></p>')
+		var marker = L.marker([47.549167, 12.324722]).addTo(adlerkarte);
+		marker.bindPopup('<h1>2. Etappe</h1><p><h3>Gaudeamushütte</h3></p>')
+		var marker = L.marker([47.533333, 12.216667]).addTo(adlerkarte);
+		marker.bindPopup('<h1>3. Etappe</h1><p><h3>Hintersteiner See</h3></p>')
+		var marker = L.marker([47.583333, 12.166667]).addTo(adlerkarte);
+		marker.bindPopup('<h1>Ankunft</h1><p><h3>Kufstein</h3></p>')
+</script>
 </p>
 
   </body>
