@@ -34,3 +34,8 @@ h2 {color:rgb(184,0,0); /*red*/
 body {
 	background-color: #FF9900;
 }
+
+#adlerkarteDiv {
+	border 6px solid green;
+	margin-left: 15px;
+	}
