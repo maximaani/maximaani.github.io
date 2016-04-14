@@ -50,26 +50,14 @@
 		});
 			
 		
-	var etappe01 = L.geoJson(etappe01json, {
-		style: {
-		color:"#ff0000",
-		weight: 10
-	}
-	});
+	var etappe01 = L.geoJson(etappe01json, {style: {color:"#ff0000", weight: 6}}).addTo(adlerkarte)
+	etappe01.bindPopup("<p<h1>1. Etappe</h1><h3>St. Johann bis Gaudeamushütte</h3></p>")
 	
-	var etappe02 = L.geoJson(etappe02json, {
-		style: {
-		color:"#0000ff",
-		weight: 10
-	}
-	});
+	var etappe02 = L.geoJson(etappe02json, {style: {color:"#0000ff", weight: 6}}).addTo(adlerkarte)
+	etappe02.bindPopup("<p<h1>2. Etappe</h1><h3>Gaudeamushütte bis Hintersteiner See</h3></p>")
 	
-	var etappe03 = L.geoJson(etappe03json, {
-		style: {
-		color:"#00ff66",
-		weight: 10
-	}
-	});
+	var etappe03 = L.geoJson(etappe03json, {style: {color:"#00ff66", weight: 6}}).addTo(adlerkarte)
+	etappe03.bindPopup("<p<h1>3. Etappe</h1><h3>Hintersteiner See bis Kufstein</h3></p>")
 	
 	adlerkarte.addLayer(etappe01);
 	adlerkarte.addLayer(etappe02);
@@ -88,14 +76,6 @@
             'imperial' : true
         }).addTo(adlerkarte);
 		
-		var marker = L.marker([47.522778, 12.429722]).addTo(adlerkarte);
-		marker.bindPopup('<h1>Startpunkt</h1><p><h3>St. Johann in Tirol</h3></p>')
-		var marker = L.marker([47.549167, 12.324722]).addTo(adlerkarte);
-		marker.bindPopup('<h1>2. Etappe</h1><p><h3>Gaudeamushütte</h3></p>')
-		var marker = L.marker([47.533333, 12.216667]).addTo(adlerkarte);
-		marker.bindPopup('<h1>3. Etappe</h1><p><h3>Hintersteiner See</h3></p>')
-		var marker = L.marker([47.583333, 12.166667]).addTo(adlerkarte);
-		marker.bindPopup('<h1>Ankunft</h1><p><h3>Kufstein</h3></p>')
 </script>
 </p>
 
