@@ -104,7 +104,36 @@
 		+"</h2><a href='"+data.photos[i].photo_url+"'>Link zum Bild</a>")	
 		.addTo(adlerkarte);
 		}}
-	}
+		
+	var urlwiki = "http://api.geonames.org/wikipediaBoundingBoxJSON?username=oeggl"
+		+'&west='+bounds.getWest()
+		+'&south='+bounds.getSouth()
+		+'&east='+bounds.getEast()
+		+'&north='+bounds.getNorth()
+		+'&lang=de'
+		+'&callback=zeigText';
+		var scriptwiki = document.createElement("script");
+		scriptwiki.src = urlwiki;
+		document.getElementsByTagName('head')[0].appendChild(scriptwiki);
+		window.zeigText=function(datawiki) {
+			//marker add, popup add, link add
+		for (var i=0; i<datawiki.geonames.length; i++) {
+			console.log("Wiki-Titel:"+datawiki.geonames[i].title);
+			L.marker(	
+				[datawiki.geonames[i].lat, datawiki.geonames[i].lng],
+				{
+					icon:L.icon({
+						iconUrl: 'wikipedia_icon.png',
+						iconSize: [40, 40]
+					})
+				}
+			).bindPopup("<a href='http://"+datawiki.geonames[i].wikipediaUrl
+				+"'>"+datawiki.geonames[i].title+"</a>").addTo(adlerkarte);
+				
+		
+		}
+		}
+		};
 </script>
 </p>
 
