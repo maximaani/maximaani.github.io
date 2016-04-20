@@ -17,6 +17,8 @@
 <p>
 	<div id="adlerkarteDiv" style="width:1000px;height:500px"></div>
 	<script>
+	window.onload = function ()
+	{
 	var layers = { // http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml
             geolandbasemap : L.tileLayer("http://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
                 subdomains : ['maps', 'maps1', 'maps2', 'maps3', 'maps4'],
@@ -50,19 +52,19 @@
 		});
 			
 		
-	var etappe01 = L.geoJson(etappe01json, {style: {color:"#ff0000", weight: 6}}).addTo(adlerkarte)
+	var etappe01 = L.geoJson(etappe01json, {style: {color:"#ff0000", weight: 6}});
 	etappe01.bindPopup("<p<h1>1. Etappe</h1><h3>St. Johann bis Gaudeamushütte</h3></p>")
 	
-	var etappe02 = L.geoJson(etappe02json, {style: {color:"#0000ff", weight: 6}}).addTo(adlerkarte)
+	var etappe02 = L.geoJson(etappe02json, {style: {color:"#0000ff", weight: 6}});
 	etappe02.bindPopup("<p<h1>2. Etappe</h1><h3>Gaudeamushütte bis Hintersteiner See</h3></p>")
 	
-	var etappe03 = L.geoJson(etappe03json, {style: {color:"#00ff66", weight: 6}}).addTo(adlerkarte)
+	var etappe03 = L.geoJson(etappe03json, {style: {color:"#00ff66", weight: 6}});
 	etappe03.bindPopup("<p<h1>3. Etappe</h1><h3>Hintersteiner See bis Kufstein</h3></p>")
 	
-	adlerkarte.addLayer(etappe01);
-	adlerkarte.addLayer(etappe02);
-	adlerkarte.addLayer(etappe03);
-
+	var adlergroup = new L.featureGroup ([etappe01, etappe02, etappe03]);
+		adlerkarte.addLayer(adlergroup);
+		adlerkarte.fitBounds(adlergroup.getBounds());
+		
         L.control.layers({
 			"Open Street Map" : layers.osmLayer,
             "Geoland Basemap" : layers.geolandbasemap,
@@ -70,12 +72,16 @@
             "Geoland Basemap Grau": layers.bmapgrau,
             "Geoland Basemap High DPI" : layers.bmaphidpi,
             "Geoland Basemap Orthofoto" : layers.bmaporthofoto30cm
-        }).addTo(adlerkarte)
-			
+			},
+			{"Tracks": adlergroup}
+        ).addTo(adlerkarte);
+		
+		
 		 L.control.scale({
             'imperial' : true
         }).addTo(adlerkarte);
-		
+	
+	};	
 </script>
 </p>
 
