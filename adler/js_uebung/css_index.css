@@ -1,0 +1,86 @@
+/* http://www.color-hex.com/color/000000 */
+h1 {
+	color: #008b09; /* dark green */
+	font-family: Verdana, sans-serif;
+	text-decoration: underline;
+	text-shadow: 2px 1px 0 #0cd410;
+}
+h2 {
+	color: #00108b; /* dark blue */
+	font-family: Verdana, sans-serif;
+}
+h3 {
+	color: black;
+	font-family: Verdana, sans-serif;
+	font-style: italic;
+	text-align: right;
+	margin-right: 100px;
+	}
+hr {
+	color: #008b09;
+	width: 95%;
+	height: 5px;
+	background-color: #008b09;
+	border: 0;
+}
+body {
+    background-color: #ffffc2;
+}
+p {
+	font-style: normal;
+	font-size: 1em;
+	font-weight: normal;
+	font-family: Verdana, sans-serif;
+}
+#box {
+	text-align: justify;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 12px;
+	font-family: Georgia, serif;
+	color: black;
+	line-height: 2;
+	border: 6px solid darkblue;
+	border-left: 6px dashed yellow;
+	border-top: 3px solid yellow;
+	border-right: 6px solid yellow;
+	padding: 30px 20px 20px 20px;
+	margin: 50px;
+	margin-left: 100px;
+	border-radius: 35px 35px 0px 0px;
+	box-shadow: 10px 10px 10px 0px rgba(50, 50, 50, 0.6);
+}
+#adler_map {
+	border: 4px solid darkblue;
+	margin-left: 20px;	
+}
+ul {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Verdana, sans-serif;
+	list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
+ol {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Verdana, sans-serif;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+}
+
+#copyright {
+	text-align: center;
+	font-style: normal;
+	font-size: 10px;
+	font-family: Verdana, sans-serif;
+	color: black;
+}
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Neu</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css_index.css"></link>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+</head>
+<body>
+<h1>Neu</h1>
+<h2>Neu</h2>
+<p>
+
+<script>
+	var pi = 3.14;
+	var liste = [1,2,3,4,5];
+	//alert(liste.length)
+	//alert(liste[2])
+	//[] --> eckige Klammern immer nur für Listen
+	//() --> mit Objekten und Funktionen verbunden
+	
+	var termin = {
+		ort : "Innsbruck",
+		zeit : "18:00",
+		tag : "Mittwoch",
+		teilnehmer : ["Sepp", "Franz", "Maria"],
+		stunden : 1.5
+	}
+	//key value pairs (z.B. key=ort, value=Innsbruck)
+	//alert(termin.ort)
+	//alert(termin.teilnehmer[2]) --> "Maria"
+	
+	//Vorschleife:
+	for (i = 0; i < termin.teilnehmer.length; i += 1) {
+		//alert(termin.teilnehmer[i])
+	}
+	
+	for (key in termin) {
+		// alert(key + " = " + termin[key]); //termin.zeit z.B.
+	}
+	
+	//Abfrage:
+	for (key in termin) {
+		if (key == "tag") {
+			//alert(key + " = " + termin[key]); //termin.zeit z.B.
+		} else if (key == "teilnehmer"){
+			//alert(termin.teilnehmer.length + " Teilnehmer dabei")
+		} else {
+			//alert("kein tag und kein teilnehmer, sondern " + key)
+		}
+	}
+	// "==" --> nicht überschreiben sondern vergleichen; "=" --> überschreiben
+	
+	function sageHallo() {
+		//alert("Hallo")
+	}
+	sageHallo();
+	
+	function sageWas(message,grade) {
+		// alert(grade)
+		alert(grade + " " + message)
+	}
+	sageWas("ich kenn' mich nicht mehr aus","wichtig!");
+		
+</script>
+
+</p>
+<hr/>
+<p id="copyright">(C) <a href="http://www.geograffix.at">Mag. Lukas Kindl, BA</a> - 2016</p>
+</br>
+</body>
+</html>
