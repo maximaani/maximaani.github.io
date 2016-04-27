@@ -3,6 +3,7 @@
 *	zeigt 3 Etappen des Adlerwegs auf einer Leaflet Karte mit Photos von Panoramio 	*	und Wikipedia Einträge werden hinzugefügt
 *	Hintergrund Karte: basemap.at
 */
+
 window.onload = function() {
 
 	var layers = { // http://www.basemap.at/wmts/1.0.0/WMTSCapabilities.xml
@@ -112,6 +113,7 @@ window.onload = function() {
 		'&north=' + bounds.getNorth() +
 		'&lang=de' +
 		'&callback=zeigText';
+		
 	var scriptwiki = document.createElement("script");
 	scriptwiki.src = urlwiki;
 	document.getElementsByTagName('head')[0].appendChild(scriptwiki);
