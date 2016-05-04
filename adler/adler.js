@@ -79,6 +79,14 @@ window.onload = function() {
 
 	var hash = new L.hash(adlerkarte); /*erstellt den verschickbaren Link mit den richtigen Koordinaten*/
 	
+	var el = L.control.elevation({
+		collapsed: true
+	}).addTo(adlerkarte); /*Elevation-Anzeige*/
+	var adlerEtappe1 = L.geoJson(etappe01json, {
+		onEachFeature: el.addData.bind(el)
+	}).addTo(adlerkarte);
+	
+	
     L.control.scale({
         'imperial': true
     }).addTo(adlerkarte);
@@ -131,6 +139,8 @@ window.onload = function() {
                 }
             ).bindPopup("<a href='http://" + datawiki.geonames[i].wikipediaUrl +
                 "'>" + datawiki.geonames[i].title + "</a>").addTo(adlerkarte);
+	
+	
 
 
         }
