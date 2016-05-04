@@ -77,7 +77,8 @@ window.onload = function() {
         "Tracks": adlergroup
     }).addTo(adlerkarte);
 
-
+	var hash = new L.hash(adlerkarte); /*erstellt den verschickbaren Link mit den richtigen Koordinaten*/
+	
     L.control.scale({
         'imperial': true
     }).addTo(adlerkarte);
@@ -94,7 +95,7 @@ window.onload = function() {
     document.getElementsByTagName('head')[0].appendChild(script);
     window.zeigBilder = function(data) {
         for (var i = 0; i < data.photos.length; i++) {
-            console.log("Fertig geladen: ", i, data.photos[i].photo_title);
+            //console.log("Fertig geladen: ", i, data.photos[i].photo_title);
             L.marker([data.photos[i].latitude, data.photos[i].longitude], {
                     icon: L.icon({
                         iconUrl: data.photos[i].photo_file_url
@@ -104,6 +105,7 @@ window.onload = function() {
                 .addTo(adlerkarte);
         }
     }
+		/*console wurde ausgeschaltet, damit wir in der F12 Konsole den Überblick behalten --> hoehen.js */
 
     var urlwiki = "http://api.geonames.org/wikipediaBoundingBoxJSON?username=oeggl" +
         '&west=' + bounds.getWest() +
@@ -119,7 +121,7 @@ window.onload = function() {
     window.zeigText = function(datawiki) {
         //marker add, popup add, link add
         for (var i = 0; i < datawiki.geonames.length; i++) {
-            console.log("Wiki-Titel:" + datawiki.geonames[i].title);
+            //console.log("Wiki-Titel:" + datawiki.geonames[i].title);
             L.marker(
                 [datawiki.geonames[i].lat, datawiki.geonames[i].lng], {
                     icon: L.icon({
