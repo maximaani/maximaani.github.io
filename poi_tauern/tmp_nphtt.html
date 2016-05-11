@@ -11,6 +11,10 @@
 	
 	<script src="nphtt_pois.geojson.js"></script>
 	
+	<link rel="stylesheet" href="dist/MarkerCluster.css"/>
+	<link rel="stylesheet" href="dist/MarkerCluster.Default.css"/>
+	<script src="dist/leaflet.markercluster.js"></script>
+	
     <script>
         window.onload = function () {
             var map = L.map('routingmap', {
@@ -27,13 +31,33 @@
             L.control.scale({
                 'imperial': false
             }).addTo(map);
+			
+			// Marker Cluster Gruppe definieren
+			var markers = L.markerClusterGroup();
 
 			var pois = L.geoJson(window.POIS, {
-			}).addTo(map);
+				onEachFeature: function (feature, layer) { //für jeden Punkt eine Beschreibung inkl. Seehoehe und als Popup
+					console.log(feature);
+					var description = feature.properties.NAME;
+					
+					if (feature.properties.SEEHOEHE > 0
+					&& feature.properties.SEEHOEHE < 9999) 
+					{
+					// Seehoehe dazuschreiben
+					description += " ("+
+					feature.properties.SEEHOEHE +
+					"m)";
+					}
+					layer.bindPopup(description);
+				}
+			}).addTo(markers);
+			map.addLayer(markers);
 			
 			map.fitBounds(pois.getBounds());
 
 			//console.log(window.POIS);
+			
+			
 		};
 
     </script>
