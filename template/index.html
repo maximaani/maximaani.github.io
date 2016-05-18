@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Leaflet template </title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+  </head>
+  <body>
+    <h1>Leaflet template</h1>
+	<div id="mousepos"></div> <!--Div hinzugefügt -->
+	
+    <div id="map" style='width:1000px;height:600px;'></div>
+    <script>
+var map = L.map('map');
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+map.setView([47.2, 11.4], 10);
+var mouseposDiv= document.getElementById("mousepos");
+//Referenz auf Div
+// "click" die Koordinaten werden nur angezeigt, wenn man clickt; "mousemove" die Koordinaten werden bei jeder Mausbewegenung über die Karte angepasst
+map.on("mousemove", function(event) {
+	console.log("Event ", event);
+	mouseposDiv.innerHTML = "Lat: " + event.latlng.lat + "Lng: "+ event.latlng.lng;
+	
+	});
+    </script>
+  </body>
+</html>
