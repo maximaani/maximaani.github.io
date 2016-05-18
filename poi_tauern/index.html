@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Routing mit der Leaflet Routing Machine - interaktiv</title>
+    <title>Points of Interest - Hohe Tauern</title>
     <link rel="stylesheet" href="js/leaflet/leaflet.css" />
     <script src="js/leaflet/leaflet.js"></script>
 
@@ -16,7 +16,33 @@
 	<script src="dist/leaflet.markercluster.js"></script>
 	
     <script>
-        window.onload = function () {
+	        window.onload = function () {
+			var legendLabels = {
+            10 : 'NP-Zentrum / Ausstellung',
+            11 : 'NP-Infostelle / Infopunkt',
+            12 : 'NP-Themenweg',
+            13 : 'Natur-Schauplatz',
+            14 : 'Forschungseinrichtung',
+            20 : 'Alpengasthof',
+            21 : 'Parkplatz',
+            22 : 'Taxizubringer',
+            23 : 'Mautstraße',
+            24 : 'Bergbahn',
+            25 : 'Kutschenzubringer',
+            26 : 'Hütte mit Übernachtung',
+            27 : 'Hütte ohne Übernachtung',
+            28 : 'Biwak / Selbstversorgerhütte',
+            29 : 'Lehrweg (nicht NP)',
+            30 : 'Sehenswürdigkeit (Schloss, Burg)',
+            31 : 'Museum',
+            32 : 'Mountainbike',
+            33 : 'Wasserfall',
+            34 : 'Wildpark',
+            35 : 'Bergwerk',
+            36 : 'Mühle',
+            37 : 'Aussichtsplattform',
+            40 : 'TVB Infobüro'
+        };
             var map = L.map('routingmap', {
                 layers : [
                     L.tileLayer("http://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png", {
@@ -54,26 +80,35 @@
 			pointToLayer: function (feature, latlng) {
 				return L.marker (latlng, {
 					icon : L.icon ({
-						iconUrl: 'nphtt/icons/nphtt_' + feature.properties.POI_TYP + '.png'
-				}),
-				iconSize: [16,16]
+						iconUrl: 'nphtt/icons/nphtt_' + feature.properties.POI_TYP + '.png',
+						iconSize: [16,16],
+						iconAnchor : [18,18],
+						popupAnchor : [0,-8]
+					}),
 				});
-				}
-			}).addTo(markers);
-			map.addLayer(markers);
+			}
+		}).addTo(markers);
+		map.addLayer(markers);
 			
-			map.fitBounds(pois.getBounds());
+		map.fitBounds(pois.getBounds());
 
 			//console.log(window.POIS);
 			
-			
+			//Legende erzeugen
+			legendenDIV = document.getElementById("legende");			
+			for (typ in legendLabels) {
+			console.log(typ,legendLabels[typ]);
+			legendenDIV.innerHTML += '<img src= "nphtt/icons/nphtt_' + typ + '.png">' + legendLabels[typ] + '<br>';
+			//<img src="nphtt/icons_10.png"> NP-Zentrum / Ausstellung<br>
+			}
 		};
 
     </script>
 </head>
 <body>
-    <h1>Routing mit der Leaflet Routing Machine - interaktiv</h1>
+    <h1>POI Hohe Tauern</h1>
     <h3>Innsbruck - Matrei in Osttirol</h3>
+	<div id="legende" style="float:right;"></div>
     <div id="routingmap" style='width:900px;height:600px;'></div>
     <h3>Links</h3>
     <ul>
