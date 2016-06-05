@@ -3,18 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="author" content="A. Speyer" />
     <title>Pionierregionen in Brasilien</title>
-    <link rel="stylesheet" href="brasil.css" />
+    <link rel="stylesheet" href="brazil.css" />
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-    <script src="geojson/nphtt_pois.geojson.js"></script>
+
 </head>
 
 <body>
-    <h1 align="center">Pionierregionen in Brasilien</h1>
-    <h2 align="center">Agroforstwirtschaftssysteme und alternative Wertschöpfungsketten<br></br> als Entwicklungsperspektive für Kleinbauern in Amazonien?</h2>
-    <h3 align="center">Das Beispiel des RECA-Projektes</h3>
-    <p id="intro"> Im Rahmen der Vertiefungsrichtung Entwicklungsforschung beschäftigt sich eine Gruppe Studierender mit den Pionierregionen in Brasiliens Westen. Die Lehrveranstaltung findet im SoSe 2016 und dem WiSe 2016/17 statt. Dazu zählt auch eine Feldforschung in Brasilien, die sich über ca. 2 1/2 Wochen erstreckt. Die Leitung der Lehrveranstaltung und Exkursion übernehmen Prof. Martin Coy und Mag. Gerhard Rainer. Die Route der Rundreise erstreckt sich über folgenden Destinationen:
+    <h1 align="center ">Pionierregionen in Brasilien</h1>
+    <h2 align="center ">Agroforstwirtschaftssysteme und alternative Wertschöpfungsketten<br></br> als Entwicklungsperspektive für Kleinbauern in Amazonien?</h2>
+    <h3 align="center ">Das Beispiel des RECA-Projektes</h3>
+    <p id="intro "> Im Rahmen der Vertiefungsrichtung Entwicklungsforschung beschäftigt sich eine Gruppe Studierender mit den Pionierregionen in Brasiliens Westen. Die Lehrveranstaltung findet im SoSe 2016 und dem WiSe 2016/17 statt. Dazu zählt auch eine Feldforschung in Brasilien, die sich über ca. 2 1/2 Wochen erstreckt. Die Leitung der Lehrveranstaltung und Exkursion übernehmen Prof. Martin Coy und Mag. Gerhard Rainer. Die Route der Rundreise erstreckt sich über folgenden Destinationen:
         <ul>
             <li>Brasília</li>
             <li>Ji-Paraná</li>
@@ -25,6 +26,27 @@
         </ul>
     </p>
 
+    <div id="map"></div>
     <script>
+        var map = L.map('map').setView([-15.5, -56.100], 5); /*Cuiabá*/
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
+        }).addTo(map);
+
+        var marker = L.marker([-15.8, -47.85]).addTo(map);
+        marker.bindPopup('<h1>Brasília</h1><p><h3>Infotext</h3></p>')
+        var marker = L.marker([-10.951944, -61.951667]).addTo(map);
+        marker.bindPopup('<h1>Ji-Paraná</h1><p><h3>Infotext</h3></p>')
+        var marker = L.marker([-8.758611, -63.881944]).addTo(map);
+        marker.bindPopup('<h1>Porto Velho</h1><p><h3>Infotext</h3></p>')
+        var marker = L.marker([-9.2452, -64.852]).addTo(map);
+        marker.bindPopup('<h1>Nova California</h1><p><h3>Infotext</h3></p>')
+        var marker = L.marker([-9.971111, -67.811111]).addTo(map);
+        marker.bindPopup('<h1>Rio Branco</h1><p><h3>Infotext</h3></p>')
     </script>
+
+
 </body>
+
+</html>

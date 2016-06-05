@@ -1,0 +1,70 @@
+h1 {
+	color:#cc5200; /*dark orange*/
+	font-family: Calibri, Serif;
+	line-height: 1;
+	margin: 25px;
+	}
+h2 {color:#e65c00; /*orange*/
+	font-family: Calibri, Serif;
+	line-height: 0.5;
+	margin: 25px;
+	}
+h3 {
+	color:#4d1f00; /*middle brown*/
+	font-family: Calibri, Serif;
+	line-height: 1;
+	margin: 25px;
+	}
+h4 {
+	color:#000080; /*navy*/
+	font-family: Calibri, Serif;
+	line-height: 1;
+	margin: 25px;
+	}
+	
+hr	{
+	color:#ffa500; /*orange*/
+	width:95%;
+	height: 5px;
+	background:#ffa500;
+	}
+img {
+	width: 250px;
+	height: 150px;
+	height: 150px;
+	}
+body {
+	color:black;
+	font-size: 16;
+	background-color:#86b300; /*mossgreen*/
+	}
+ul {
+	font-family: Calibri, Georgia, serif;
+}
+#intro {
+		font-style: normal;
+		font-size: 14;
+		font-family: Calibri, Georgia, serif;
+		text-align: justify;
+		line-height: 1;
+		margin: 25px;
+}
+#box {
+		font-style: normal;
+		font-size: 14;
+		font-weight: bold;
+		font-family: Calibri, Georgia, serif;
+		text-decoration: underline;
+		color: #ffa500; /*orange*/
+		text-align: justify;
+		line-height: 2;
+		padding: 40px;
+		margin: 20px;
+		border: 5px solid green;
+		border-radius: 40px 40px 40px 40px;
+		box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
+		} 
+#map {
+		height:500px;
+		width: 700px;
+		}
