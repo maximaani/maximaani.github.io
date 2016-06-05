@@ -1,18 +1,18 @@
 h1{color:rgb(160,0,0); /*darker red*/
 	font-family: Georgia, Serif;
 	font-size:24;
-	text-align:center;
+	text-align:left;
 	}
 h2 {color:rgb(184,0,0); /*red*/
 	font-family:Georgia, Serif;
 	font-size:18;
-	text-align:center;
+	text-align:left;
 	}
 	
 h3 {color:rgb(160,0,0); /*darker red*/
 	font-family:Georgia, Serif;
 	font-size:16;
-	text-align:center;
+	text-align:left;
 	}
 	
 #intro {
