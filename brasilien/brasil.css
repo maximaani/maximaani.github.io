@@ -1,16 +1,25 @@
 h1 {
-	color:#ffa500; /*orange*/
+	color:#cc5200; /*dark orange*/
 	font-family: Calibri, Serif;
+	line-height: 1;
+	margin: 25px;
 	}
-h2 {color:black;
+h2 {color:#e65c00; /*orange*/
+	font-family: Calibri, Serif;
+	line-height: 0.5;
+	margin: 25px;
 	}
 h3 {
-	color:#228b22; /*forestgreen*/
+	color:#4d1f00; /*middle brown*/
 	font-family: Calibri, Serif;
+	line-height: 1;
+	margin: 25px;
 	}
 h4 {
 	color:#000080; /*navy*/
 	font-family: Calibri, Serif;
+	line-height: 1;
+	margin: 25px;
 	}
 	
 hr	{
@@ -27,18 +36,20 @@ img {
 body {
 	color:black;
 	font-size: 16;
-	background-color:#98Fb98; /*palegreen*/
+	background-color:#86b300; /*mossgreen*/
 	}
-ol	{
-	color:#696969; /*dimgray*/
-	font-size:14;
-	}
-	
-ul	{
-	color:#696969; /*dimgray*/
-	font-size:14;
-	}	
+ul {
+	font-family: Calibri, Georgia, serif;
+}
 #intro {
+		font-style: normal;
+		font-size: 14;
+		font-family: Calibri, Georgia, serif;
+		text-align: justify;
+		line-height: 1;
+		margin: 25px;
+}
+#box {
 		font-style: normal;
 		font-size: 14;
 		font-weight: bold;
