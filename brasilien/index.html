@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="author" content="A. Speyer" >
+    <meta name="author" content="A. Speyer">
     <title>Pionierregionen in Brasilien</title>
     <link rel="stylesheet" href="brazil.css" />
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
@@ -29,12 +29,12 @@
     <div id="map"></div>
     <script>
         var map = L.map('map').setView([-15.5, -56.100], 5); /*Cuiabá*/
-		
-		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
         }).addTo(map);
-		
-		/*Destination: Marker setzen*/
+
+        /*Destination: Marker setzen*/
         var marker = L.marker([-15.8, -47.85]).addTo(map);
         marker.bindPopup('<h1>Brasília</h1><p><h3>Infotext</h3></p>').openPopup(); /*openPopup lässt das Popup offen*/
         var marker = L.marker([-10.951944, -61.951667]).addTo(map);
@@ -45,69 +45,69 @@
         marker.bindPopup('<h1>Nova California</h1><p><h3>Infotext</h3></p>')
         var marker = L.marker([-9.971111, -67.811111]).addTo(map);
         marker.bindPopup('<h1>Rio Branco</h1><p><h3>Infotext</h3></p>')
-		
-		/*Ziehen von Polylines zwischen Destinationen*/
-		var linie = L.polyline([
-		[-15.8, -47.85],
-		[-10.951944, -61.951667],
-		],{
+
+        /*Ziehen von Polylines zwischen Destinationen*/
+        var linie = L.polyline([
+            [-15.8, -47.85],
+            [-10.951944, -61.951667],
+        ], {
             color: '#004d00',
-             weight: 4
-		}).addTo(map);
+            weight: 4
+        }).addTo(map);
 
 
-		var linie = L.polyline([
-		[-10.951944, -61.951667],
-		[-8.758611, -63.881944]
-		],{
+        var linie = L.polyline([
+            [-10.951944, -61.951667],
+            [-8.758611, -63.881944]
+        ], {
             color: '#008000',
-             weight: 4
-		}).addTo(map);
-		
-		var linie = L.polyline([
-		[-8.758611, -63.881944],
-		[-9.2452, -64.852]
-		],{
+            weight: 4
+        }).addTo(map);
+
+        var linie = L.polyline([
+            [-8.758611, -63.881944],
+            [-9.2452, -64.852]
+        ], {
             color: '#00b300',
-             weight: 4
-		}).addTo(map);
-		
-		var linie = L.polyline([
-		[-9.2452, -64.852],
-		[-9.971111, -67.811111]
-		],{
+            weight: 4
+        }).addTo(map);
+
+        var linie = L.polyline([
+            [-9.2452, -64.852],
+            [-9.971111, -67.811111]
+        ], {
             color: '#00e600',
-             weight: 4
-		}).addTo(map);;
-		
-		var linie = L.polyline([
-		[-9.971111, -67.811111],
-		[-15.8, -47.85]
-		],{
+            weight: 4
+        }).addTo(map);;
+
+        var linie = L.polyline([
+            [-9.971111, -67.811111],
+            [-15.8, -47.85]
+        ], {
             color: '#1aff1a',
-             weight: 4
-		}).addTo(map);
-		map.fitBounds(linie.getBounds());
-                
-		/*Radius um die Hauptstadt Brasília*/
-		var circle = L.circle([-15.8, -47.85], 90000, {
-		color: '#cc5200', /*dark orange*/
-		fillColor: '#cc5200',
-		fillOpacity: 0.5
-		}).addTo(map);
-		
-		/*Testversuch: setzen eines Polygons*/
-		var polygon = L.polygon([
-		[-9.2452, -64.852],
-		[-9.9, -65],
-		[-10, -65.5]
-		]).addTo(map);
-		
-		L.control.scale({
-                    'imperial': true
-                }).addTo(map);
-            </script>
-	  </script>
+            weight: 4
+        }).addTo(map);
+        map.fitBounds(linie.getBounds());
+
+        /*Radius um die Hauptstadt Brasília*/
+        var circle = L.circle([-15.8, -47.85], 90000, {
+            color: '#cc5200',
+            /*dark orange*/
+            fillColor: '#cc5200',
+            fillOpacity: 0.5
+        }).addTo(map);
+
+        /*Testversuch: setzen eines Polygons*/
+        var polygon = L.polygon([
+            [-9.2452, -64.852],
+            [-9.9, -65],
+            [-10, -65.5]
+        ]).addTo(map);
+
+        L.control.scale({
+            'imperial': true
+        }).addTo(map);
+    </script>
 
 
 </body>
