@@ -2,12 +2,15 @@
 
 window.onload = function() {
 
- var map = L.map('map').setView([-15.5, -56.100], 5); /*Cuiabá*/
+ var map = L.map('map',{
+	 center: [-15.5, -56.100],
+		zoom: 5}); /*Cuiabá*/
+
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
         }).addTo(map);
 		
-	    /*Destination: Marker setzen*/
+		/*Destination: Marker setzen*/
 		var marker1 = L.marker([-15.8, -47.85]).addTo(map);
         marker1.bindPopup('<h1>Brasília</h1><p><h3>Infotext</h3></p>').openPopup(); /*openPopup lässt das Popup offen*/
         var marker2 = L.marker([-10.951944, -61.951667]).addTo(map);
@@ -20,13 +23,12 @@ window.onload = function() {
         marker5.bindPopup('<h1>Rio Branco</h1><p><h3>Infotext</h3></p>')
 		var marker6 = L.marker([-22.908333, -43.196389]).addTo(map);
         marker6.bindPopup('<h1>Rio de Janeiro</h1><p><h3>Infotext</h3></p>').openPopup(); /*openPopup lässt das Popup offen*/
-		var marker7 = L.marker([-0.22, -78.52]).addTo(map);
-        marker7.bindPopup('<h1>Quito (Ecuador)</h1><p><h3>Infotext</h3></p>').addTo(map);
-
-        var markergroup = new L.featureGroup([marker1, marker2, marker3, marker4, marker5, marker6, marker7]);
-        map.fitBounds(markergroup.getBounds());
 		
-		var mouseposDiv= document.getElementById("mousepos");
+        
+		var markergroup = new L.featureGroup([marker1, marker2, marker3, marker4, marker5, marker6]);
+        /*map.fitBounds(markergroup.getBounds()); hier funktioniert was nicht richtig*/
+		
+		var mouseposDiv = document.getElementById("mousepos");
 		//Referenz auf Div
 		// "click" die Koordinaten werden nur angezeigt, wenn man clickt; "mousemove" die Koordinaten werden bei jeder Mausbewegenung über die Karte angepasst
 		map.on("mousemove", function(event) {
@@ -115,7 +117,8 @@ window.onload = function() {
                 var x = L.marker(
                     [data.photos[i].latitude, data.photos[i].longitude], {
                         icon: L.icon({
-                            iconUrl: data.photos[i].photo_file_url
+                            iconUrl: data.photos[i].photo_file_url,
+							iconSize: [40, 40]
                         })
                     }
                 ).bindPopup("<h2>" + data.photos[i].photo_title + "</h2>" +
@@ -142,7 +145,8 @@ window.onload = function() {
             // console.log("Wiki-Titel: " + wikidata.geonames[i2].title);
             var wik_mark = L.marker([wikidata.geonames[i2].lat, wikidata.geonames[i2].lng]);
             var icon = L.icon({
-                iconUrl: "image/wikipedia_icon.png"
+                iconUrl: "image/wikipedia_icon.png",
+				iconSize: [40, 40]
             });
             wik_mark.setIcon(icon);
             wik_mark.bindPopup("<a href='http://" + wikidata.geonames[i2].wikipediaUrl +
