@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="brazil.css" />
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-	<script src="panoramio.js"></script>
+    <script src="panoramio.js"></script>
 
 </head>
 
@@ -46,9 +46,9 @@
         marker4.bindPopup('<h1>Nova California</h1><p><h3>Infotext</h3></p>')
         var marker5 = L.marker([-9.971111, -67.811111]).addTo(map);
         marker5.bindPopup('<h1>Rio Branco</h1><p><h3>Infotext</h3></p>')
-		
-		var markergroup = new L.featureGroup([marker1, marker2, marker3, marker4, marker5]);
-		map.fitBounds(markergroup.getBounds());
+
+        var markergroup = new L.featureGroup([marker1, marker2, marker3, marker4, marker5]);
+        map.fitBounds(markergroup.getBounds());
 
         /*Ziehen von Polylines zwischen Destinationen*/
         var linie = L.polyline([
@@ -111,10 +111,33 @@
         L.control.scale({
             'imperial': true
         }).addTo(map);
-		
-		/*Panoramio einbetten*/
-	
-	
+
+        /*Panoramio einbetten*/
+        var bounds = markergroup.getBounds();
+        var panoramio = "http://www.panoramio.com/map/get_panoramas.php?set=public&from=0&to=20" +
+            '&minx=' + bounds.getWest() +
+            '&miny=' + bounds.getSouth() +
+            '&maxx=' + bounds.getEast() +
+            '&maxy=' + bounds.getNorth() +
+            '&size=mini_square&mapfilter=true&callback=zeigBilder';
+        var script = document.createElement("script");
+        script.src = panoramio;
+        document.getElementsByTagName('head')[0].appendChild(script);
+        window.zeigBilder = function(data) {
+            for (var i = 0; i < data.photos.length; i++) {
+                // console.log("Photo Titel: ", i, data.photos[i].photo_title);
+                var x = L.marker(
+                    [data.photos[i].latitude, data.photos[i].longitude], {
+                        icon: L.icon({
+                            iconUrl: data.photos[i].photo_file_url
+                        })
+                    }
+                ).bindPopup("<h2>" + data.photos[i].photo_title + "</h2>" +
+                    "<a href=' " + data.photos[i].photo_url + "'>Link zum Bild</a>"
+                ).addTo(map);
+                // console.log(data.photos[i].photo_file_url)
+            }
+        }
     </script>
 
 
