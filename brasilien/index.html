@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="brazil.css" />
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+	<script src="panoramio.js"></script>
 
 </head>
 
@@ -35,16 +36,19 @@
         }).addTo(map);
 
         /*Destination: Marker setzen*/
-        var marker = L.marker([-15.8, -47.85]).addTo(map);
-        marker.bindPopup('<h1>Brasília</h1><p><h3>Infotext</h3></p>').openPopup(); /*openPopup lässt das Popup offen*/
-        var marker = L.marker([-10.951944, -61.951667]).addTo(map);
-        marker.bindPopup('<h1>Ji-Paraná</h1><p><h3>Infotext</h3></p>')
-        var marker = L.marker([-8.758611, -63.881944]).addTo(map);
-        marker.bindPopup('<h1>Porto Velho</h1><p><h3>Infotext</h3></p>')
-        var marker = L.marker([-9.2452, -64.852]).addTo(map);
-        marker.bindPopup('<h1>Nova California</h1><p><h3>Infotext</h3></p>')
-        var marker = L.marker([-9.971111, -67.811111]).addTo(map);
-        marker.bindPopup('<h1>Rio Branco</h1><p><h3>Infotext</h3></p>')
+        var marker1 = L.marker([-15.8, -47.85]).addTo(map);
+        marker1.bindPopup('<h1>Brasília</h1><p><h3>Infotext</h3></p>').openPopup(); /*openPopup lässt das Popup offen*/
+        var marker2 = L.marker([-10.951944, -61.951667]).openPopup();
+        marker2.bindPopup('<h1>Ji-Paraná</h1><p><h3>Infotext</h3></p>')
+        var marker3 = L.marker([-8.758611, -63.881944]).addTo(map);
+        marker3.bindPopup('<h1>Porto Velho</h1><p><h3>Infotext</h3></p>')
+        var marker4 = L.marker([-9.2452, -64.852]).addTo(map);
+        marker4.bindPopup('<h1>Nova California</h1><p><h3>Infotext</h3></p>')
+        var marker5 = L.marker([-9.971111, -67.811111]).addTo(map);
+        marker5.bindPopup('<h1>Rio Branco</h1><p><h3>Infotext</h3></p>')
+		
+		var markergroup = new L.featureGroup([marker1, marker2, marker3, marker4, marker5]);
+		map.fitBounds(markergroup.getBounds());
 
         /*Ziehen von Polylines zwischen Destinationen*/
         var linie = L.polyline([
@@ -107,6 +111,10 @@
         L.control.scale({
             'imperial': true
         }).addTo(map);
+		
+		/*Panoramio einbetten*/
+	
+	
     </script>
 
 
