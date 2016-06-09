@@ -26,8 +26,8 @@ window.onload = function() {
 
     var markergroup = new L.featureGroup([marker1, marker2, marker3, marker4, marker5, marker6]);
     /*map.fitBounds(markergroup.getBounds()); hier funktioniert was nicht richtig*/
-
-    var mouseposDiv = document.getElementById("mousepos");
+	
+	var mouseposDiv = document.getElementById("mousepos");
     //Referenz auf Div
     // "click" die Koordinaten werden nur angezeigt, wenn man clickt; "mousemove" die Koordinaten werden bei jeder Mausbewegenung über die Karte angepasst
     map.on("mousemove", function(event) {
@@ -94,10 +94,6 @@ window.onload = function() {
         [-10, -65.5]
     ]).addTo(map);
 
-    L.control.scale({
-        'imperial': true
-    }).addTo(map);
-
     /*Panoramio einbetten*/
 
     var bounds = markergroup.getBounds();
@@ -126,46 +122,46 @@ window.onload = function() {
             // console.log(data.photos[i].photo_file_url)
         }
     }
-	
-	// Variable für den ersten geklickten Punkt
-			var first_point = null;
-
-            // Routing control hinzufügen und minimieren
-            var routing_control = L.Routing.control({
-                show : false
-            }).addTo(map);
-
-			// Klicks auf Karte verarbeiten
-			map.on("click", function (event) {
-				if (first_point) {
-                    // Wegpunkte setzen und Routing control zeigen
-                    routing_control.setWaypoints([
-                        first_point,
-                        event.latlng
-                    ]);
-                    routing_control.show();
-										
-					// ersten Punkt wieder löschen
-					first_point = null;
-				} else {
-					// Routing control minimieren
-					routing_control.hide();
-
-					// merken des ersten Punkts
-					first_point = event.latlng;
-			}
-			});
 
     /*routing_machine*/
     var routing = L.Routing.control({
         waypoints: [
             L.latLng(-15.8, -47.85), /*Brasília*/
             L.latLng(-10.951944, -61.951667), /*Ji-Paraná*/
-			 L.latLng(-8.758611, -63.881944), /*Porto Velho*/
-			 L.latLng(-9.2452, -64.852), /*Nova California*/
-			  L.latLng(-9.971111, -67.811111) /*Rio Branco*/
+            L.latLng(-8.758611, -63.881944), /*Porto Velho*/
+            L.latLng(-9.2452, -64.852), /*Nova California*/
+            L.latLng(-9.971111, -67.811111) /*Rio Branco*/
         ]
     }).addTo(map);
+
+    // Variable für den Tipp Marker definieren
+    var tipp_marker;
+    // Routing control hinzufügen und minimieren
+    var routing_control = L.Routing.control({
+        show: false
+    }).addTo(map);
+    // Klicks auf Karte verarbeiten
+    map.on("click", function(event) {
+        if (tipp_marker) {
+            // Wegpunkte setzen und Routing control zeigen
+            routing_control.setWaypoints([
+                tipp_marker.getLatLng(),
+                event.latlng
+            ]);
+            routing_control.show();
+            // Tipp Marker löschen
+            map.removeLayer(tipp_marker);
+            tipp_marker = null;
+        } else {
+            // Routing control minimieren
+            routing_control.hide()
+                // Tipp anzeigen und Marker merken
+            tipp_marker = L.marker(event.latlng).addTo(map);
+            tipp_marker.bindPopup('Ziel klicken ...').openPopup();
+        }
+
+
+    });
 
     /*Wikipedia einbetten*/
     var url_wiki = "http://api.geonames.org/wikipediaBoundingBoxJSON?username=oeggl" +
@@ -195,4 +191,7 @@ window.onload = function() {
 
         }
     }
+    L.control.scale({
+        'imperial': true
+    }).addTo(map);
 }
