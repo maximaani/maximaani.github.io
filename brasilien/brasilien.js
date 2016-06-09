@@ -126,43 +126,46 @@ window.onload = function() {
             // console.log(data.photos[i].photo_file_url)
         }
     }
+	
+	// Variable für den ersten geklickten Punkt
+			var first_point = null;
+
+            // Routing control hinzufügen und minimieren
+            var routing_control = L.Routing.control({
+                show : false
+            }).addTo(map);
+
+			// Klicks auf Karte verarbeiten
+			map.on("click", function (event) {
+				if (first_point) {
+                    // Wegpunkte setzen und Routing control zeigen
+                    routing_control.setWaypoints([
+                        first_point,
+                        event.latlng
+                    ]);
+                    routing_control.show();
+										
+					// ersten Punkt wieder löschen
+					first_point = null;
+				} else {
+					// Routing control minimieren
+					routing_control.hide();
+
+					// merken des ersten Punkts
+					first_point = event.latlng;
+			}
+			});
 
     /*routing_machine*/
     var routing = L.Routing.control({
         waypoints: [
             L.latLng(-15.8, -47.85), /*Brasília*/
-            L.latLng(-10.951944, -61.951667) /*Ji-Paraná*/
-        ]
-    }).addTo(map);
-
-    var routing1 = L.Routing.control({
-        waypoints: [
             L.latLng(-10.951944, -61.951667), /*Ji-Paraná*/
-            L.latLng(-8.758611, -63.881944) /*Porto Velho*/
+			 L.latLng(-8.758611, -63.881944), /*Porto Velho*/
+			 L.latLng(-9.2452, -64.852), /*Nova California*/
+			  L.latLng(-9.971111, -67.811111) /*Rio Branco*/
         ]
     }).addTo(map);
-
-    var routing2 = L.Routing.control({
-        waypoints: [
-            L.latLng(-8.758611, -63.881944), /*Porto Velho*/
-            L.latLng(-9.2452, -64.852) /*Nova California*/
-        ]
-    }).addTo(map);
-
-    var routing3 = L.Routing.control({
-        waypoints: [
-            L.latLng(-9.2452, -64.852), /*Nova California*/
-            L.latLng(-9.971111, -67.811111) /*Rio Branco*/
-        ]
-    }).addTo(map);
-
-    var routing4 = L.Routing.control({
-        waypoints: [
-            L.latLng(-9.971111, -67.811111), /*Rio Branco*/
-            L.latLng(-15.8, -47.85) /*Brasília*/
-        ]
-    }).addTo(map);
-
 
     /*Wikipedia einbetten*/
     var url_wiki = "http://api.geonames.org/wikipediaBoundingBoxJSON?username=oeggl" +
