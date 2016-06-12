@@ -12,18 +12,19 @@ window.onload = function() {
 
     /*Destination: Marker setzen*/
     var marker1 = L.marker([-15.8, -47.85]).addTo(map);
-    marker1.bindPopup('<h1>Brasília</h1><p><h3>Infotext</h3></p>').openPopup(); /*openPopup lässt das Popup offen*/
+    marker1.bindPopup('<h1>Brasília</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Bras%C3%ADlia"> Link</a></h3></p>').openPopup(); /*openPopup lässt das Popup offen*/
     var marker2 = L.marker([-10.951944, -61.951667]).addTo(map);
-    marker2.bindPopup('<h1>Ji-Paraná</h1><p><h3>Infotext</h3></p>')
+    marker2.bindPopup('<h1>Ji-Paraná</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Ji-Paran%C3%A1"> Link</a></h3></p>')
     var marker3 = L.marker([-8.758611, -63.881944]).addTo(map);
-    marker3.bindPopup('<h1>Porto Velho</h1><p><h3>Infotext</h3></p>')
+    marker3.bindPopup('<h1>Porto Velho</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Porto_Velho"> Link</a></h3></p>')
     var marker4 = L.marker([-9.2452, -64.852]).addTo(map);
-    marker4.bindPopup('<h1>Nova California</h1><p><h3>Infotext</h3></p>')
+    marker4.bindPopup('<h1>Nova California</h1><p><h3>Wikipedia (nur in Portugiesisch):<a href="https://pt.wikipedia.org/wiki/Nova_Calif%C3%B3rnia_(Porto_Velho)"> Link</a></h3></p>')
     var marker5 = L.marker([-9.971111, -67.811111]).addTo(map);
-    marker5.bindPopup('<h1>Rio Branco</h1><p><h3>Infotext</h3></p>')
+    marker5.bindPopup('<h1>Rio Branco</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Rio_Branco"> Link</a></h3></p>')
     var marker6 = L.marker([-22.908333, -43.196389]).addTo(map);
-    marker6.bindPopup('<h1>Rio de Janeiro</h1><p><h3>Infotext</h3></p>').addTo(map);
-
+    marker6.bindPopup('<h1>Rio de Janeiro</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Rio_de_Janeiro"> Link</a></p>').addTo(map);
+	
+	
     var markergroup = new L.featureGroup([marker1, marker2, marker3, marker4, marker5, marker6]);
     /*map.fitBounds(markergroup.getBounds()); hier funktioniert was nicht richtig*/
 
@@ -88,15 +89,15 @@ window.onload = function() {
     }).addTo(map);
 
     /*Testversuch: setzen eines Polygons*/
-    var polygon = L.polygon([
+   /* var polygon = L.polygon([
         [-9.2452, -64.852],
         [-9.9, -65],
         [-10, -65.5]
-    ]).addTo(map);
+    ]).addTo(map);*/
 
     /*Panoramio einbetten*/
 
-    var bounds = markergroup.getBounds();
+   /* var bounds = markergroup.getBounds();
     var url_panoramio = "http://www.panoramio.com/map/get_panoramas.php?set=public&from=0&to=20" +
         '&minx=' + bounds.getWest() +
         '&miny=' + bounds.getSouth() +
@@ -121,50 +122,10 @@ window.onload = function() {
             ).addTo(map);
             // console.log(data.photos[i].photo_file_url)
         }
-    }
-
-    /*routing_machine*/
-    var routing = L.Routing.control({
-        waypoints: [
-            L.latLng(-15.8, -47.85), /*Brasília*/
-            L.latLng(-10.951944, -61.951667), /*Ji-Paraná*/
-            L.latLng(-8.758611, -63.881944), /*Porto Velho*/
-            L.latLng(-9.2452, -64.852), /*Nova California*/
-            L.latLng(-9.971111, -67.811111) /*Rio Branco*/
-        ]
-    }).addTo(map);
-
-    // Variable für den Tipp Marker definieren
-    var tipp_marker;
-    // Routing control hinzufügen und minimieren
-    var routing_control = L.Routing.control({
-        show: false,
-    }).addTo(map);
-    // Klicks auf Karte verarbeiten
-    map.on("click", function(event) {
-        if (tipp_marker) {
-            // Wegpunkte setzen und Routing control zeigen
-            routing_control.setWaypoints([
-                tipp_marker.getLatLng(),
-                event.latlng
-            ]);
-            routing_control.show();
-            // Tipp Marker löschen
-            map.removeLayer(tipp_marker);
-            tipp_marker = null;
-        } else {
-            // Routing control minimieren
-            routing_control.hide()
-                // Tipp anzeigen und Marker merken
-            tipp_marker = L.marker(event.latlng).addTo(map);
-            tipp_marker.bindPopup('Ziel klicken ...').openPopup();
-        }
-
-
-    });
-
+    }*/ 
+	
     /*Wikipedia einbetten*/
-    var url_wiki = "http://api.geonames.org/wikipediaBoundingBoxJSON?username=oeggl" +
+   /* var url_wiki = "http://api.geonames.org/wikipediaBoundingBoxJSON?username=oeggl" +
         '&west=' + bounds.getWest() +
         '&south=' + bounds.getSouth() +
         '&east=' + bounds.getEast() +
@@ -190,7 +151,7 @@ window.onload = function() {
             // console.log(wik_mark)
 
         }
-    }
+    }*/
     L.control.scale({
         'imperial': true
     }).addTo(map);
