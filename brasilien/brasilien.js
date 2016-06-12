@@ -115,18 +115,35 @@ window.onload = function() {
         weight: 4
     }).addTo(mapbraz);
 	
-    /*Testversuch: setzen eines Polygons*/
-   /* var polygon = L.polygon([
-        [-9.2452, -64.852],
-        [-9.9, -65],
-        [-10, -65.5]
-    ]).addTo(mapbraz);*/
+    /*Setzen eines Polygons für "Pastagem Plantada"*/
+
+	var polygon1 = L.polygon([
+        [-10.98, -61.54],
+        [-11.0, -61.41],
+        [-11.26, -61.31],
+		[-11.52, -61.29],
+		[-11.9, -61.52],
+		[-11.73,-62.82],
+		[-11.53,-62.55],
+		[-11.16,-62.69],
+		[-11.18,-62.83],
+		[-10.90,-63.00],
+		[-10.46,-63.21],
+		[-10.32,-62.98],
+		[-10.15,-62.26],
+		[-10.97,-61.43],
+		]).addTo(mapbraz);
+		
+		polygon1.setStyle({
+			color: '#8b4513',
+			fillColor: '#8b4513'}); /*saddlebrown*/
 	
-	var circle = L.circle([-15.8, -47.85], 90000, {
+	
+		/*var circle = L.circle([-15.8, -47.85], 90000, {
 		color: '#cc5200',
 		fillColor:'#cc5200',
 		fillOpacity:0.5
-	}).addTo(mapbraz);
+	}).addTo(mapbraz);*/ /*Radius wurde wegen Überlagerung durch Panoramio deaktiviert*/
 	
 
     /*Panoramio einbetten*/
