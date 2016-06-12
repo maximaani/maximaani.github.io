@@ -6,15 +6,15 @@ window.onload = function() {
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(mapbraz);
-	
-	var routing = L.Routing.control({
+
+    var routing = L.Routing.control({
         show: false,
         waypoints: [
-			L.latLng(-15.8, -47.85), /*Brasília*/
+            L.latLng(-15.8, -47.85), /*Brasília*/
             L.latLng(-10.951944, -61.951667), /*Ji-Paraná*/
             L.latLng(-8.758611, -63.881944), /*Porto Velho*/
             L.latLng(-9.2452, -64.852), /*Nova California*/
-			L.latLng(-9.971111, -67.811111) /*Rio Branco*/
+            L.latLng(-9.971111, -67.811111) /*Rio Branco*/
         ]
     }).addTo(mapbraz);
 
@@ -45,12 +45,12 @@ window.onload = function() {
             tipp_marker = L.marker(event.latlng).addTo(mapbraz);
             tipp_marker.bindPopup('Anklicken der Zieldestination: die Route wird berechnet ...').openPopup();
         }
-});
+    });
 
     /*Destination: Marker setzen*/
     var marker1 = L.marker([-15.8, -47.85]).addTo(mapbraz);
     marker1.bindPopup('<h1>Brasília</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Bras%C3%ADlia"> Link</a></h3></p>')
-	var marker2 = L.marker([-10.951944, -61.951667]).addTo(mapbraz);
+    var marker2 = L.marker([-10.951944, -61.951667]).addTo(mapbraz);
     marker2.bindPopup('<h1>Ji-Paraná</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Ji-Paran%C3%A1"> Link</a></h3></p>')
     var marker3 = L.marker([-8.758611, -63.881944]).addTo(mapbraz);
     marker3.bindPopup('<h1>Porto Velho</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Porto_Velho"> Link</a></h3></p>')
@@ -60,8 +60,8 @@ window.onload = function() {
     marker5.bindPopup('<h1>Rio Branco</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Rio_Branco"> Link</a></h3></p>')
     var marker6 = L.marker([-22.908333, -43.196389]).addTo(mapbraz);
     marker6.bindPopup('<h1>Rio de Janeiro</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Rio_de_Janeiro"> Link</a></p>')
-	
-	
+
+
     var markergroup = new L.featureGroup([marker1, marker2, marker3, marker4, marker5, marker6]);
     mapbraz.fitBounds(markergroup.getBounds());
 
@@ -114,41 +114,61 @@ window.onload = function() {
         color: '#1aff1a',
         weight: 4
     }).addTo(mapbraz);
-	
+
     /*Setzen eines Polygons für "Pastagem Plantada"*/
 
-	var polygon1 = L.polygon([
+    var polygon1 = L.polygon([
         [-10.98, -61.54],
         [-11.0, -61.41],
         [-11.26, -61.31],
-		[-11.52, -61.29],
-		[-11.9, -61.52],
-		[-11.73,-62.82],
-		[-11.53,-62.55],
-		[-11.16,-62.69],
-		[-11.18,-62.83],
-		[-10.90,-63.00],
-		[-10.46,-63.21],
-		[-10.32,-62.98],
-		[-10.15,-62.26],
-		[-10.97,-61.43],
-		]).addTo(mapbraz);
-		
-		polygon1.setStyle({
-			color: '#8b4513',
-			fillColor: '#8b4513'}); /*saddlebrown*/
-	
-	
-		/*var circle = L.circle([-15.8, -47.85], 90000, {
+        [-11.52, -61.29],
+        [-11.9, -61.52],
+        [-11.73, -62.82],
+        [-11.53, -62.55],
+        [-11.16, -62.69],
+        [-11.18, -62.83],
+        [-10.90, -63.00],
+        [-10.46, -63.21],
+        [-10.32, -62.98],
+        [-10.15, -62.26],
+        [-10.97, -61.43],
+    ]).addTo(mapbraz);
+
+    polygon1.setStyle({
+        color: '#8b4513',
+        fillColor: '#8b4513'
+    }); /*saddlebrown*/
+
+
+    /*var circle = L.circle([-15.8, -47.85], 90000, {
 		color: '#cc5200',
 		fillColor:'#cc5200',
 		fillOpacity:0.5
-	}).addTo(mapbraz);*/ /*Radius wurde wegen Überlagerung durch Panoramio deaktiviert*/
-	
+	}).addTo(mapbraz);*/
+    /*Radius wurde wegen Überlagerung durch Panoramio deaktiviert*/
+
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
 
     /*Panoramio einbetten*/
 
-   var bounds = markergroup.getBounds();
+    var bounds = markergroup.getBounds();
     var url_panoramio = "http://www.panoramio.com/map/get_panoramas.php?set=public&from=0&to=30" +
         '&minx=' + bounds.getWest() +
         '&miny=' + bounds.getSouth() +
@@ -174,9 +194,9 @@ window.onload = function() {
             // console.log(data.photos[i].photo_file_url)
         }
     }
-	
+
     /*Wikipedia einbetten*/
-   var url_wiki = "http://api.geonames.org/wikipediaBoundingBoxJSON?username=oeggl" +
+    var url_wiki = "http://api.geonames.org/wikipediaBoundingBoxJSON?username=oeggl" +
         '&west=' + bounds.getWest() +
         '&south=' + bounds.getSouth() +
         '&east=' + bounds.getEast() +
@@ -202,8 +222,9 @@ window.onload = function() {
             // console.log(wik_mark)
 
         }
-	
-       L.control.scale({
-        'imperial': true
-    }).addTo(mapbraz);
-}}
+
+        L.control.scale({
+            'imperial': true
+        }).addTo(mapbraz);
+    }
+}

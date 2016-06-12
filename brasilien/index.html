@@ -2,16 +2,16 @@
 <html>
 
 <head>
-	<title>Pionierregionen in Brasilien</title>
+    <title>Pionierregionen in Brasilien</title>
     <meta charset="utf-8">
     <meta name="author" content="A. Speyer">
     <link rel="stylesheet" href="brazil.css"></link>
     <link rel="stylesheet" href="leaflet/leaflet.css"></link>
-	<link rel="stylesheet" href="dist/leaflet-routing-machine.css" />
-	<script src="brasilien.js"></script>
-	<script src="leaflet/leaflet.js"></script>
+    <link rel="stylesheet" href="dist/leaflet-routing-machine.css" />
+    <script src="brasilien.js"></script>
+    <script src="leaflet/leaflet.js"></script>
     <script src="dist/leaflet-routing-machine.min.js"></script>
-	<script src="leaflet-hash.js"></script>
+    <script src="leaflet-hash.js"></script>
 
 </head>
 
@@ -29,6 +29,22 @@
             <li>Brasília</li>
         </ul>
     </p>
+
+
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Menü</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#Home">Home</a>
+            <a href="#Über uns">Über uns</a>
+            <a href="#Bilder">Bilder</a>
+            <a href="#Links">Links</a>
+        </div>
+    </div>
+
+    <script>
+        /* When the user clicks on the button, 
+        toggle between hiding and showing the dropdown content */
+    </script>
 
     <div id="map_br"></div>
     <div id="mousepos"></div>
