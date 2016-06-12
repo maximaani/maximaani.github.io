@@ -43,14 +43,14 @@ window.onload = function() {
             routing_control.hide()
                 // Tipp anzeigen und Marker merken
             tipp_marker = L.marker(event.latlng).addTo(mapbraz);
-            tipp_marker.bindPopup('Für Routenberechnung bitte Zieldestination anklicken ...').openPopup();
+            tipp_marker.bindPopup('Anklicken der Zieldestination: die Route wird berechnet ...').openPopup();
         }
 });
 
     /*Destination: Marker setzen*/
     var marker1 = L.marker([-15.8, -47.85]).addTo(mapbraz);
-    marker1.bindPopup('<h1>Brasília</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Bras%C3%ADlia"> Link</a></h3></p>').openPopup(); /*openPopup lässt das Popup offen*/
-    var marker2 = L.marker([-10.951944, -61.951667]).addTo(mapbraz);
+    marker1.bindPopup('<h1>Brasília</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Bras%C3%ADlia"> Link</a></h3></p>')
+	var marker2 = L.marker([-10.951944, -61.951667]).addTo(mapbraz);
     marker2.bindPopup('<h1>Ji-Paraná</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Ji-Paran%C3%A1"> Link</a></h3></p>')
     var marker3 = L.marker([-8.758611, -63.881944]).addTo(mapbraz);
     marker3.bindPopup('<h1>Porto Velho</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Porto_Velho"> Link</a></h3></p>')
@@ -59,11 +59,11 @@ window.onload = function() {
     var marker5 = L.marker([-9.971111, -67.811111]).addTo(mapbraz);
     marker5.bindPopup('<h1>Rio Branco</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Rio_Branco"> Link</a></h3></p>')
     var marker6 = L.marker([-22.908333, -43.196389]).addTo(mapbraz);
-    marker6.bindPopup('<h1>Rio de Janeiro</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Rio_de_Janeiro"> Link</a></p>').addTo(mapbraz);
+    marker6.bindPopup('<h1>Rio de Janeiro</h1><p><h3>Wikipedia:<a href="https://de.wikipedia.org/wiki/Rio_de_Janeiro"> Link</a></p>')
 	
 	
     var markergroup = new L.featureGroup([marker1, marker2, marker3, marker4, marker5, marker6]);
-    /*mapbraz.fitBounds(markergroup.getBounds()); hier funktioniert was nicht richtig*/
+    mapbraz.fitBounds(markergroup.getBounds());
 
     var mouseposDiv = document.getElementById("mousepos");
     //Referenz auf Div
@@ -75,7 +75,7 @@ window.onload = function() {
     });
 
     /*Ziehen von Polylines zwischen Destinationen*/
-    var linie = L.polyline([
+    var linie1 = L.polyline([
         [-15.8, -47.85],
         [-10.951944, -61.951667],
     ], {
@@ -83,8 +83,7 @@ window.onload = function() {
         weight: 4
     }).addTo(mapbraz);
 
-
-    var linie = L.polyline([
+    var linie2 = L.polyline([
         [-10.951944, -61.951667],
         [-8.758611, -63.881944]
     ], {
@@ -92,7 +91,7 @@ window.onload = function() {
         weight: 4
     }).addTo(mapbraz);
 
-    var linie = L.polyline([
+    var linie3 = L.polyline([
         [-8.758611, -63.881944],
         [-9.2452, -64.852]
     ], {
@@ -100,7 +99,7 @@ window.onload = function() {
         weight: 4
     }).addTo(mapbraz);
 
-    var linie = L.polyline([
+    var linie4 = L.polyline([
         [-9.2452, -64.852],
         [-9.971111, -67.811111]
     ], {
@@ -108,29 +107,27 @@ window.onload = function() {
         weight: 4
     }).addTo(mapbraz);;
 
-    var linie = L.polyline([
+    var linie5 = L.polyline([
         [-9.971111, -67.811111],
         [-15.8, -47.85]
     ], {
         color: '#1aff1a',
         weight: 4
     }).addTo(mapbraz);
-    mapbraz.fitBounds(linie.getBounds());
-
-    /*Radius um die Hauptstadt Brasília*/
-    var circle = L.circle([-15.8, -47.85], 90000, {
-        color: '#cc5200',
-        /*dark orange*/
-        fillColor: '#cc5200',
-        fillOpacity: 0.5
-    }).addTo(mapbraz);
-
+	
     /*Testversuch: setzen eines Polygons*/
    /* var polygon = L.polygon([
         [-9.2452, -64.852],
         [-9.9, -65],
         [-10, -65.5]
     ]).addTo(mapbraz);*/
+	
+	var circle = L.circle([-15.8, -47.85], 90000, {
+		color: '#cc5200',
+		fillColor:'#cc5200',
+		fillOpacity:0.5
+	}).addTo(mapbraz);
+	
 
     /*Panoramio einbetten*/
 
@@ -188,6 +185,7 @@ window.onload = function() {
             // console.log(wik_mark)
 
         }
+	
        L.control.scale({
         'imperial': true
     }).addTo(mapbraz);
