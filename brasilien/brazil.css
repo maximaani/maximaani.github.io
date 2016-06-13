@@ -24,10 +24,11 @@ h4 {
 	
 hr	{
 	color:#ffa500; /*orange*/
-	width:95%;
+	width:70%;
 	height: 5px;
 	background:#ffa500;
 	}
+
 img {
 	width: 250px;
 	height: 150px;
@@ -37,12 +38,24 @@ body {
 	color:black;
 	font-size: 16;
 	background-color:#86b300; /*mossgreen*/
-	margin-left:auto;
-	margin-right:auto;
+	margin:25px;
 	
 	}
+	
+p 	{
+	margin:25px;
+	}
+	
+img {
+	width: 300px;
+	height: 200px;
+	margin: 25px;
+	}
+	
 ul {
 	font-family: Calibri, Georgia, serif;
+	font-size:16;
+	margin:25px;
 }
 #intro {
 		font-style: normal;
@@ -52,20 +65,20 @@ ul {
 		line-height: 1;
 		margin: 25px;
 }
+
 #box {
 		font-style: normal;
 		font-size: 14;
 		font-weight: bold;
 		font-family: Calibri, Georgia, serif;
 		text-decoration: underline;
-		color: #ffa500; /*orange*/
+		color: #000080; /*navy*/
 		text-align: justify;
 		line-height: 2;
 		padding: 40px;
-		margin: 20px;
+		margin: 25px;
 		border: 5px solid green;
 		border-radius: 40px 40px 40px 40px;
-		box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
 		} 
 #map_br {
 		height:500px;
@@ -73,6 +86,11 @@ ul {
 		margin-left: auto;
 		margin-right: auto;
 		}
+#mouspos {
+		margin: 25px;
+	
+}
+
  /* Dropdown Button */
 .dropbtn {
     background-color: #4CAF50;
@@ -81,6 +99,7 @@ ul {
     font-size: 16px;
     border: none;
     cursor: pointer;
+	margin: 25px;
 }
 
 /* Dropdown button on hover & focus */
@@ -116,3 +135,7 @@ ul {
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+#copyright {
+	margin:25px;
+}
